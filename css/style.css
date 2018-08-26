@@ -20,8 +20,14 @@ body {
 }
 
 a {
-  color: #7e4d7e;
+  color: #ffffff;
   text-decoration: none;
+}
+
+h2 {
+  font-size: 1.65em;
+  font-weight: 500;
+  line-height: 1.8;
 }
 
 /* --------------------------------
@@ -742,4 +748,9 @@ footer.nav-is-visible {
     font-size: 32px;
   }
 
+}
+
+
+div.project-descripton {
+  line-height: 1.8;
 }

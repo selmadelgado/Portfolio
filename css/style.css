@@ -494,7 +494,6 @@ header::before {
 .cd-main-content {
   position: relative;
   z-index: 2;
-  min-height: 100vh;
   padding-top: 50px;
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
@@ -614,10 +613,12 @@ header::before {
 .filter-wrap {
   padding-top: 70px;
   padding-bottom: 30px;
+  width: 100%;
 }
 
 .filter-style-button {
   cursor: pointer;
+  display: inline;
 }
 
 .filter-style-button:hover {

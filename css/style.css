@@ -19,6 +19,13 @@ body {
   letter-spacing: 1px;
 }
 
+.aboutMe {
+  font-family: 'Abel', sans-serif;
+  font-family: 'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  font-size: .85em;
+  line-height: 1.5;
+}
+
 a {
   color: #ffffff;
   text-decoration: none;
@@ -28,6 +35,12 @@ h2 {
   font-size: 1.65em;
   font-weight: 500;
   line-height: 1.8;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 /* --------------------------------

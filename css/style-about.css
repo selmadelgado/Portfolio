@@ -21,8 +21,10 @@ body {
 
 .aboutMe {
   font-family: 'Abel', sans-serif;
+  font-family: Helvetica Neue,Helvetica,Arial,Liberation Sans,Roboto,Noto,sans-serif!important;
   font-size: 1em;
   line-height: 1.5;
+  font-weight: 300;
 }
 
 a {
@@ -39,8 +41,8 @@ h2 {
 
 h3 {
   font-size: 1.25em;
-  font-weight: 585;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 1.85;
 }
 
 .pink {background-color: #F3E5DE;}

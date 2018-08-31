@@ -656,6 +656,7 @@ header::before {
 .filter-style-button {
   cursor: pointer;
   display: inline;
+  padding-left: 18px;
 }
 
 .filter-style-button:hover {

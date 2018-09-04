@@ -277,12 +277,12 @@ header::before {
   transition: transform 0.3s, opacity 0.3s;
 }
 .cd-main-nav a:focus {
-  color: #cda96d;
+  color: #E08BA7;
   text-decoration: none;
   font-weight: 700;
 }
 .cd-main-nav a:hover {
-  color: #cda96d;
+  color: #E08BA7;
   text-decoration: none;
 }
 .cd-main-nav li ul {
@@ -676,7 +676,8 @@ header::before {
 
 .filter-style-button:hover {
   cursor: pointer;
-  color: #cda96d;
+  color: #E08BA7;
+  text-decoration-style: double;
 }
 
 .category {

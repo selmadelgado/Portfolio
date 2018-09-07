@@ -16,6 +16,7 @@ jQuery(document).ready(function($){
         $('.cd-main-nav').toggleClass('nav-is-visible');
         $('footer').toggleClass('nav-is-visible');
         $('#over-hidden').toggleClass('over-hidden');
+        $('body').toggleClass('hideOverflow');
     });
 
     //mobile version - go back to main navigation

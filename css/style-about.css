@@ -21,10 +21,11 @@ body {
 
 .aboutMe {
   font-family: 'Abel', sans-serif;
-  font-family: Helvetica Neue,Helvetica,Arial,Liberation Sans,Roboto,Noto,sans-serif!important;
+  font-family: Helvetica, Arial, Liberation Sans, Roboto, Noto, sans-serif !important;
   font-size: 1em;
   line-height: 1.5;
   font-weight: 300;
+  color: #36454F;
 }
 
 a {

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Archive — Selma Delgado</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f6f1e7'/><text x='50' y='65' font-family='Georgia,serif' font-style='italic' font-size='50' fill='%23a07a30' text-anchor='middle'>SD</text><circle cx='50' cy='50' r='42' fill='none' stroke='%23a07a30' stroke-width='2'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #f6f1e7;
+    --paper: #ffffff;
+    --paper-shadow: #e8dfc9;
+    --ink: #1f1d18;
+    --ink-soft: #5a5346;
+    --ink-faint: #8a8170;
+    --brass: #a07a30;
+    --brass-deep: #6b4f1e;
+    --crimson: #9c3030;
+    --rule: #d8cfb8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at top, rgba(160, 122, 48, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(156, 48, 48, 0.03) 0%, transparent 60%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.18;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .index-header {
+    padding: 80px 8vw 60px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .back-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--brass);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 40px;
+    transition: opacity 0.2s;
+  }
+
+  .back-link:hover { opacity: 0.7; }
+
+  .file-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--brass);
+    text-transform: uppercase;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .file-tag::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--brass), transparent);
+    min-width: 60px;
+  }
+
+  .index-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .index-title em { font-style: italic; color: var(--brass); font-weight: 400; }
+
+  .index-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .index-intro {
+    max-width: 680px;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.7;
+    border-left: 2px solid var(--brass);
+    padding-left: 24px;
+  }
+
+  .file-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 8vw 60px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  @media (min-width: 700px) {
+    .file-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .file-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 32px 30px 28px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 240px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+  }
+
+  .file-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -8px rgba(60, 50, 30, 0.15);
+    border-color: var(--brass);
+  }
+
+  .file-card.is-placeholder {
+    opacity: 0.55;
+    cursor: default;
+    background: transparent;
+    border-style: dashed;
+  }
+
+  .file-card.is-placeholder:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--rule);
+  }
+
+  .file-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--brass);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .file-card.is-placeholder .file-number {
+    color: var(--ink-faint);
+  }
+
+  .file-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .file-title em { font-style: italic; }
+
+  .file-era {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .file-desc {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-style: italic;
+    text-wrap: pretty;
+    margin-bottom: 20px;
+  }
+
+  .file-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .file-card.is-placeholder .file-meta {
+    border-top-style: dashed;
+  }
+
+  .index-footer {
+    border-top: 1px solid var(--rule);
+    padding: 50px 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-seal {
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--brass);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brass);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--brass);
+    opacity: 0.6;
+  }
+  .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+  .corner-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+</style>
+</head>
+<body>
+
+<header class="index-header">
+  <span class="corner corner-tl"></span>
+  <span class="corner corner-tr"></span>
+
+  <a class="back-link" href="../about-me.html">← Back to About Me</a>
+
+  <div class="file-tag">
+    <span>The Vault</span>
+    <span>Selma Delgado Archive</span>
+  </div>
+
+  <h1 class="index-title">The <em>Archive</em></h1>
+  <p class="index-subtitle">A career told through the objects she kept</p>
+
+  <p class="index-intro">
+    Every credential, every letter, every souvenir, every business card —
+    catalogued and explained. These are the artifacts of a designer's
+    career, told in chapters and dated by hand. A work in progress.
+  </p>
+</header>
+
+<main class="file-grid">
+
+  <!-- FILE 01 -->
+  <a class="file-card" href="newsroom.html">
+    <div class="file-number">File № 01</div>
+    <h2 class="file-title">The <em>Newsroom</em></h2>
+    <div class="file-era">Reagan High School · Houston · 1988–1992</div>
+    <p class="file-desc">Ninth grade. All the art classes were full. A first Macintosh, a press pass, an unprecedented two-year run as Editor-in-Chief, and a letter that captured all of it.</p>
+    <div class="file-meta">
+      <span>7 exhibits</span>
+      <span>Open file →</span>
+    </div>
+  </a>
+
+  <!-- FILE 02 PLACEHOLDER -->
+  <div class="file-card is-placeholder">
+    <div class="file-number">File № 02</div>
+    <h2 class="file-title">The <em>Print Shop</em></h2>
+    <div class="file-era">Kinko's · Night Shift · Houston · c. 1992–1995</div>
+    <p class="file-desc">The years that taught me production design, deadlines, detail, and craftsmanship. Brochures, business cards, flyers, church bulletins — and the reaction on someone's face when they saw it finished.</p>
+    <div class="file-meta">
+      <span>In progress</span>
+      <span>To be catalogued</span>
+    </div>
+  </div>
+
+  <!-- FILE 03 -->
+  <a class="file-card" href="silicon-valley.html">
+    <div class="file-number">File № 03 · Chapter</div>
+    <h2 class="file-title">Silicon Valley <em>Benchmarking</em></h2>
+    <div class="file-era">Pixar · Google · Apple · California · Summer 2010</div>
+    <p class="file-desc">A trip arranged by Jim Snyder, the former Global Security Manager for Apple and Pixar. Three campuses he once oversaw, plus Google, in one week. The credentials, the gifts, the doors that opened.</p>
+    <div class="file-meta">
+      <span>16 exhibits · 3 campuses</span>
+      <span>Open file →</span>
+    </div>
+  </a>
+
+  <!-- FILE 04 PLACEHOLDER -->
+  <div class="file-card is-placeholder">
+    <div class="file-number">File № 04</div>
+    <h2 class="file-title">More <em>to come</em></h2>
+    <div class="file-era">Era to be catalogued</div>
+    <p class="file-desc">The archive will grow. Other chapters — ConocoPhillips, full-stack development, 6000pixels, and the AI era — are still being assembled from boxes, drawers, and folders.</p>
+    <div class="file-meta">
+      <span>In progress</span>
+      <span>Coming soon</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="index-footer">
+  <div>Archive · Selma Delgado · Vol. I</div>
+  <div class="footer-seal">SD</div>
+  <div>Catalogued 2026 · selmadelgado.com</div>
+</footer>
+
+</body>
+</html>
